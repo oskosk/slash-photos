@@ -44,6 +44,7 @@ class Photos {
 		wp_register_style(
 		    'slash-photos',
 		    plugins_url( 'slash-photos/styles.css', SLASH_PHOTOS_DIR ),
+		    [ 'media-views' ],
 		    '1.0'
 		);
 	}
@@ -100,7 +101,11 @@ class Photos {
 		$attached_images = get_posts( $args );
 		$this->error_log($attached_images );
 		$attached_images_urls = array_map( function( $img ) {
-			return $img->guid;
+			return [
+				'url' => $img->guid,
+				'thumbnail_url' => wp_get_attachment_thumb_url( $img->ID ),
+				'post_parent' => $img->post_parent,
+			];
 		}, $attached_images );
 		error_log(print_r($attached_images, true ));
 		return $attached_images_urls;

@@ -1,31 +1,8 @@
 .slash-photos-container {
-	margin: auto;
-	max-width: 1200px;
+
 }
 
-.responsive-image {
-	max-width: 100%;
-}
-
-.cell img {
-	display: block;
-	margin: 1em;
-}
-
-
-@media screen and (min-width: 600px) {
-	.grid {
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: row;
-	}
-	.cell {
-		width: 50%;
-	}
-}
-
-@media screen and (min-width: 1000px) {
-	.cell {
-		width: calc(100% / 3);
-	}
+.slash-photos-container .thumbnail {
+	display: inline-block;
+	width: 12.5%;
 }
