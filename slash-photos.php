@@ -3,6 +3,9 @@
  * Plugin Name: Slash Photos
  * Description: Add a /photos URL to your site showing every image that you've ever published on your posts
  */
+if ( ! defined( 'ABSPATH' ) ) {
+        exit;
+}
 
 define( 'SLASH_PHOTOS_DIR', dirname( __FILE__ ) );
 define( 'SLASH_PHOTOS_DEBUG', true );
@@ -71,6 +74,7 @@ class Photos {
 		    'post_parent' => $pid 
 		); 
 		$attached_images = get_posts( $args );
+		$this->debug($attached_images );
 		$attached_images_urls = array_map( function( $img ) {
 			return $img->guid;
 		}, $attached_images );	
