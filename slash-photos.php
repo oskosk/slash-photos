@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Slash Photos
- * Description: Show all the photos from your posts in just one page.
+ * Description: Add a /photos URL to your site showing every image that you've ever published on your posts
  */
 
 define( 'SLASH_PHOTOS_DIR', dirname( __FILE__ ) );
