@@ -35,6 +35,7 @@ class Photos {
 	function init() {
 		$this->register_shortcode();
 		$this->enqueue_scripts();
+		$this->maybe_create_photos_page();
 	}
 
 	/**
@@ -99,7 +100,6 @@ class Photos {
 		    'post_parent' => $pid
 		);
 		$attached_images = get_posts( $args );
-		$this->error_log($attached_images );
 		$attached_images_urls = array_map( function( $img ) {
 			return [
 				'url' => $img->guid,
@@ -107,8 +107,45 @@ class Photos {
 				'post_parent' => $img->post_parent,
 			];
 		}, $attached_images );
-		error_log(print_r($attached_images, true ));
+
 		return $attached_images_urls;
+	}
+
+	function maybe_create_photos_page() {
+		if ( ! $this->photos_page_exists() ) {
+			$this->create_photos_page();
+		} else {
+			$this->error_log( 'it does exist' );
+		}
+	}
+
+	/**
+	 * Checks if a page with the /photos slug already exists
+	 */
+	function photos_page_exists() {
+		$slug = $this->photos_page_slug();
+		return false != get_page_by_path( $slug );
+	}
+	/**
+	 * Creates a page with the /photos slug
+	 */
+	function create_photos_page() {
+
+	}
+	/**
+	 * Returns the photos page slug. Defaults to /photos
+	 */
+	function photos_page_slug() {
+		$slug = apply_filters( 'slash-photos_page-slug', '/photos' );
+		return $slug;
+	}
+
+	/**
+	 * Returns the photos page default title. Defaults to __( 'Photos' )
+	 */
+	function photos_page_default_title() {
+		$slug = apply_filters( 'slash-photos_page-title', __( 'Photos', 'slash-photos' ) );
+		return $slug;
 	}
 }
 
