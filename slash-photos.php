@@ -5,14 +5,23 @@
  */
 
 define( 'SLASH_PHOTOS_DIR', dirname( __FILE__ ) );
+define( 'SLASH_PHOTOS_DEBUG', true );
 
 class Photos {
 	function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
 	}
 
+	function debug( $msg ) {
+		if ( SLASH_PHOTOS_DEBUG ) {
+			if ( gettype( $msg ) !== 'string' ) {
+				$msg = print_r( $msg, true ) ;
+			}
+			error_log( $msg );
+		}
+	}
+
 	function init() {
-		error_log('titan');
 		$this->register_shortcode();
 		$this->enqueue_scripts();
 	}
@@ -24,7 +33,7 @@ class Photos {
 		    '1.0', // version number
 		    'screen' // CSS media type
 		);
-		wp_enqueue_style( 'slash-photos' );
+		wp_enqueue_style( 'slash-photos', [ 'media'] );
 	}
 
 	function register_shortcode() {
@@ -33,7 +42,8 @@ class Photos {
 
 	function shortcode( $attrs ) {
 		ob_start();
-		$images = $this->get_images();
+		$image_urls = $this->get_images();
+		$this->debug( $image_urls );
 		include( 'tpl.php' );
 		return ob_get_clean();   
 	}

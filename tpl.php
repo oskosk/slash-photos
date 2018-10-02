@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="slash-photos-container masonry">
 <?php
-	foreach( $images as $image ) {
+	foreach( $image_urls as $image ) {
 	?>
 		<div class="slash-photos-image">
 			<a href="#">
@@ -15,5 +15,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 	}
 ?>
-	Alo
 </div>
