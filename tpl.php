@@ -4,17 +4,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="slash-photos-container">
-	<div class="grid">
 		<?php
 			foreach( $image_urls as $image ) {
 			?>
-				<div class="slash-photos-image cell">
-					<a href="#">
-						<img src="<?php echo $image; ?>" />
+				<div class="thumbnail">
+					<a target="_blank" rel="noopener noreferrer" href="<?php echo get_permalink( $image['post_parent'] );?>">
+						<img src="<?php echo $image['thumbnail_url']; ?>" />
 					</a>
 				</div>
 			<?php
 			}
 		?>
-	</div>
 </div>
