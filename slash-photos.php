@@ -33,9 +33,8 @@ class Photos {
 		wp_register_style(
 		    'slash-photos',
 		    plugins_url( 'slash-photos/styles.css', SLASH_PHOTOS_DIR ),
-		    '1.0',
+		    '1.0'
 		);
-		wp_enqueue_style( 'slash-photos' );
 	}
 
 	function register_shortcode() {
@@ -43,6 +42,7 @@ class Photos {
 	}
 
 	function shortcode( $attrs ) {
+		wp_enqueue_style( 'slash-photos' );
 		ob_start();
 		$image_urls = $this->get_images();
 		$this->debug( $image_urls );
