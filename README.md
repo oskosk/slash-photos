@@ -17,3 +17,8 @@ A plugin that adds a `/photos` URL to your site showing every image that you've 
 $ wp plugin install --activate https://github.com/oskosk/slash-photos/archive/master.zip
 ```
 
+
+
+## To Do
+
+https://github.com/oskosk/slash-photos/issues/1
