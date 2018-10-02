@@ -1,21 +1,30 @@
-div.masonry {
-	display: -ms-flexbox;
-	-ms-flex-direction: column;
-	-ms-flex-wrap: wrap;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	height: 100vw;
-	font-size: 0; 
-	overflow: auto;
+.slash-photos-container {
+  margin: auto;
+  max-width: 1200px;
 }
-div.masonry > div { 
-	width: 33.3%;
-	transition: .8s opacity;
+
+.responsive-image {
+  max-width: 100%;
 }
-div.masonry:hover img {
-	opacity: 0.3;
+
+.cell img {
+  display: block;
 }
-div.masonry:hover img:hover {
-	opacity: 1;
+
+
+@media screen and (min-width: 600px) {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .cell {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .cell {
+    width: calc(100% / 3);
+  }
 }
