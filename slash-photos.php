@@ -33,10 +33,9 @@ class Photos {
 		wp_register_style(
 		    'slash-photos',
 		    plugins_url( 'slash-photos/styles.css', SLASH_PHOTOS_DIR ),
-		    '1.0', // version number
-		    'screen' // CSS media type
+		    '1.0',
 		);
-		wp_enqueue_style( 'slash-photos', [ 'media'] );
+		wp_enqueue_style( 'slash-photos' );
 	}
 
 	function register_shortcode() {
